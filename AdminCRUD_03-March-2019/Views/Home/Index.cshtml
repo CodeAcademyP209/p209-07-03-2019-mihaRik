@@ -25,12 +25,12 @@
                 <div class="mbr-gallery-layout-default">
                     <div>
                         <div>
-                            @foreach (var galleryItem in Model.GalleryItem)
+                            @for (var i = 0; i < Model.GalleryItem.Count(); i++)
                             {
                                 <div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false"
-                                     data-tags="@galleryItem.Tag">
-                                    <div href="#lb-gallery1-4" data-slide-to="0" data-toggle="modal">
-                                        <img src="~/Public/images/@galleryItem.Image"
+                                     data-tags="@Model.GalleryItem.ElementAt(i).Tag">
+                                    <div href="#lb-gallery1-4" data-slide-to="@i" data-toggle="modal">
+                                        <img src="~/Public/images/@Model.GalleryItem.ElementAt(i).Image"
                                              alt="Bootstrap portfolio template" title=""><span class="icon-focus"></span>
                                     </div>
                                 </div>
@@ -46,36 +46,13 @@
                     <div class="modal-content">
                         <div class="modal-body">
                             <div class="carousel-inner">
-                                <div class="carousel-item">
-                                    <img src="~/Public/images/pete-bellis-500938-unsplash-2000x1330.jpg" alt=""
-                                         title="">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="~/Public/images/daniel-jensen-354545-unsplash-2000x1333.jpg"
-                                         alt="Bootstrap portfolio template" title="">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="~/Public/images/drew-hays-161811-unsplash-2000x1333.jpg" alt="" title="">
-                                </div>
-                                <div class="carousel-item active">
-                                    <img src="~/Public/images/gallery03.jpg" alt=""
-                                         title="">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="~/Public/images/fezbot2000-94147-unsplash-2000x1333.jpg"
-                                         alt="Bootstrap portfolio template" title="">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="~/Public/images/nathalie-desiree-mottet-624600-unsplash-2000x1333.jpg"
-                                         alt="" title="">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="~/Public/images/cristian-escobar-297114-unsplash-2000x1333.jpg" alt=""
-                                         title="">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="~/Public/images/gallery07.jpg" alt="" title="">
-                                </div>
+                                @for (var i = 0; i < Model.GalleryItem.Count(); i++)
+                                {
+                                    <div class="carousel-item @(i == 0 ? "active" : null)">
+                                        <img src="~/Public/images/@Model.GalleryItem.ElementAt(i).Image" alt=""
+                                             title="">
+                                    </div>
+                                }
                             </div><a class="carousel-control carousel-control-prev" role="button" data-slide="prev"
                                      href="#lb-gallery1-4">
                                 <span class="mbri-left mbr-iconfont"
