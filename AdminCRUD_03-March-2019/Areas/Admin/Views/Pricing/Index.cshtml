@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Pricing>
+@{
+    ViewBag.Title = "Pricing";
+}
+
+<h2>Pricing table</h2>
+
+<table class="table table-striped admin-gallery-table">
+    <thead>
+        <tr>
+            <th>Price</th>
+            <th>Duration</th>
+            <th>Photos count</th>
+            <th>Place</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var price in Model)
+        {
+            <tr>
+                <td>@price.Price</td>
+                <td>@price.Duration</td>
+                <td>@price.PhotosCount</td>
+                <td>@price.Place</td>
+                <td>
+                    <a href="~/Admin/Pricing/Edit/@price.Id" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

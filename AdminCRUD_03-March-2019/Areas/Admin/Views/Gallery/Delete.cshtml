@@ -1,0 +1,24 @@
+﻿@model GalleryItem
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Are you sure, babe?</h2>
+
+<form method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Tag)
+        @Html.TextBoxFor(m => m.Tag, new { @class = "form-control", @readonly = "readonly" })
+        @Html.ValidationMessageFor(m => m.Tag, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label>Current photo</label>
+        <img src="~/Public/images/@Model.Image" class="img-thumbnail" width="200" />
+    </div>
+
+    <input type="submit" value="Delete image" class="btn btn-danger" />
+    <a href="~/Admin/Gallery/Index" class="btn btn-black-outline">Back to the list</a>
+</form>

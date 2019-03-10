@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AdminCRUD_03_March_2019.Models.GalleryItem>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Gallery items</h2>
+
+@Html.ActionLink("Create new one","Create","Gallery",null,new { @class="btn btn-outline"})
+
+<table class="table table-striped admin-gallery-table">
+    <thead>
+        <tr>
+            <th>Tag</th>
+            <th>Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var image in Model)
+        {
+            <tr>
+                <td>@image.Tag</td>
+                <td>
+                    <img src="~/Public/images/@image.Image" class="img-thumbnail" width="200" />
+                </td>
+                <td>
+                    <a href="~/Admin/Gallery/Edit/@image.Id" class="btn btn-primary">Edit</a>
+                    <a href="~/Admin/Gallery/Delete/@image.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

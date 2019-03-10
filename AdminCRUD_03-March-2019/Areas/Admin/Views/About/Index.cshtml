@@ -1,0 +1,32 @@
+﻿@model IEnumerable<About>
+
+<h2>About section</h2>
+
+@Html.ActionLink("Create new one", "Create", "About", null, new { @class = "btn btn-outline" })
+
+<table class="table table-striped admin-gallery-table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var about in Model)
+        {
+            <tr>
+                <td>@about.Title</td>
+                <td>@Html.Raw(about.Description)</td>
+                <td>
+                    <img src="~/Public/images/@about.Image" class="img-thumbnail" width="200" />
+                </td>
+                <td>
+                    <a href="~/Admin/About/Edit/@about.Id" class="btn btn-primary">Edit</a>
+                    <a href="~/Admin/About/Delete/@about.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

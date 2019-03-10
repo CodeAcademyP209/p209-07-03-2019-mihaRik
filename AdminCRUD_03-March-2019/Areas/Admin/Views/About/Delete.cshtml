@@ -1,0 +1,30 @@
+﻿@model About
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Are you sur, babe?</h2>
+
+<form method="post" enctype="multipart/form-data" style="padding-bottom: 50px;">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @readonly = "readonly" })
+        @Html.ValidationMessageFor(m => m.Title, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description)
+        @Html.Raw(Model.Description)
+        @Html.ValidationMessageFor(m => m.Description, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label>Current photo</label>
+        <img src="~/Public/images/@Model.Image" class="img-thumbnail" width="200" />
+    </div>
+
+    <input type="submit" value="Delete about item" class="btn btn-danger" />
+    <a href="~/Admin/About/Index" class="btn btn-black-outline">Back to the list</a>
+</form>
